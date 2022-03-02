@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php   include 'link.php' ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this is a page of html practices">
+    <link rel="stylesheet" type="text/css" href="style6.css">
+    <link rel="icon" href="Images/button.jpg">
     <title>HTML Project 3</title>
 </head>
 <body bgcolor="brown">
@@ -19,7 +24,7 @@
         <tr>
             <td colspan="3">
                 <p><b>Contact Us</b><br><br>We are always happy to hear from you. If you have any questions or comments, feel free to contact us by using the form below and we'll get back to you soon.</p>
-                <form action="" method="POST">
+                <form>
                     <label>Email</label>
                     <input type="email" placeholder="Enter your email" name="email" required>
                     <br><br>
@@ -27,10 +32,10 @@
                     <input type="text" name="subject" placeholder="Enter your subject" required>
                     <br><br><br>
                     <label>Textarea</label><br>
-                    <textarea cols="30" rows="6" required name="textarea"></textarea>
+                    <textarea cols="30" rows="6" required></textarea>
                     <br>
-                    <button name="submit">Submit</button>
-                    <!-- <button name="reset">Reset</button> -->
+                    <button>Submit</button>
+                    <button>Reset</button>
                 </form>
             
             </td>
@@ -46,35 +51,3 @@
     
 </body>
 </html>
-
-
-<?php
-
-include 'connection.php';
-
-if(isset($_POST['submit'])){
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $textarea = $_POST['textarea'];
-
-    $insertquery = " insert into inqarytable(Email, subject, textarea) values('$email', '$subject', '$textarea') ";
-    // INSERT INTO `inqarytable`(`serial no`, `Email`, `subject`, `textarea`) VALUES ('[$email]','[$subject]','[$textarea]','[value-4]')
-
-    $result = mysqli_query($con, $insertquery);
-
-    if($result){
-        ?>
-        <script>
-            alert('Data Successfully Submitted');
-        </script>
-        <?php
-    }else{
-        ?>
-        <script>
-            alert('Due to technical issue data is not insert');
-        </script>
-        <?php
-    }
-}
-
-?>
